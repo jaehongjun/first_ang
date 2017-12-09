@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {User} from './user';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,31 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  //user = new User();
+  userList:Array<User> = [];
+  
+  userName : string = "";
+  userAge :number = 0;
+
+constructor(){ // onload와 유사
+  // this.user.userName = "jeon"
+  // this.user.userAge = 1
+}
+  addUser() : void{
+    var user:User = new User();
+    user.userName = this.userName;
+    user.userAge = this.userAge;
+    this.userList.push(user);
+    //alert(this.userName + this.userAge);
+  }
+  test() : void{    
+    var user1:User = new User();
+    user1.userName = "동동이";
+    user1.userAge = 3;
+    this.userList.push(user1);
+    var user1:User = new User();
+    user1.userName = "쌍둥이";
+    user1.userAge = 6;
+    this.userList.push(user1);
+    }
 }

@@ -1,0 +1,31 @@
+
+commonJs(ExpressJs)
+amd
+
+npm config set cache d:\ts2\npm-cache npm 설치경로 캐시
+
+npm init -y //npm 인스톨관련
+cli 
+
+package.json
+
+karma.conf.js 개발용?
+
+@NgModule
+
+ExpressJs,Angular,Language:typeScript
+
+{{}} -> 바인딩태그
+
+inline.bundle.js -> 웹팩으로 만들어짐 하나로 관리하기 위해
+
+type을 주지 않으면 any ex) str : string = '123';
+
+(click)="test()" 이벤트
+
+app.component.spec.ts 화면에 대한 단위테스트
+
+카르마 서버 테스트는 자스민 
+
+nodeJS vscode git 
+package.json 내가 사용할 수 있는 명령어의 정의
