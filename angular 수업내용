@@ -29,3 +29,38 @@ app.component.spec.ts 화면에 대한 단위테스트
 
 nodeJS vscode git 
 package.json 내가 사용할 수 있는 명령어의 정의
+
+select @@autocommit;
+
+스냅샷 commit안하고 종료시 이전 시점으로 돌아가는거?
+
+
+
+express 설치
+npm init -y
+npm istall express -save
+
+package.json 개발용 디펜던시 
+  "dependencies": {
+    "express": "^4.16.2"
+  } 생김
+
+  .gitignore 파일 생성 후 /node_modules --> 노드모듈 깃에 올리는거 막기
+
+
+D:\ts2\works\exp>git init
+D:\ts2\works\exp>git remote add origin https://github.com/jaehongjun/exp.git
+D:\ts2\works\exp>git add *
+D:\ts2\works\exp>git commit -m "init"
+
+
+--로컬 레파지토리 -> 라이브
+  git push origin master
+
+static
+서버영역 80
+dynamic
+서버영역 3000
+db
+서버영역 3306
+데이터 JSON

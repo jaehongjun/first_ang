@@ -1,0 +1,42 @@
+mysql 프로시져
+delimeter$$ 실행문 시작
+end $$      끝
+delimiter;
+
+DELIMITER $$
+create PROCEDURE p_insert_user(
+in p_username varchar(100),
+p_userage int,
+p_userid varchar(100),
+p_userpwd varchar(100),
+p_useraddress varchar(300),
+p_dino int)
+begin
+	declare exit handler for SQLEXCEPTION
+	begin
+		get diagnOstics CONDITION 1
+		@p1 = returned_sqlstate,@p2 = message_text;
+		select @p1 as returned_sqlstate ,  @p2 as message_text;
+		rollback;
+	end;
+	start TRANSACTION;
+	insert into user_info (username, userage, userid, userpwd, useraddress,dino)
+	values(p_username,p_userage,p_userid,p_userpwd,p_useraddress,p_dino);
+	
+	update depart_info
+	set dicnt = dicnt+1
+	where dino = p_dino;
+	commit;
+end $$
+
+call p_insert_user('zz',22,'ss','dd',null,3);
+
+--  VIEW  --
+create view v_ui_di as 
+select ui.username, ui.userage, di.diname, di.dino, di.didesc
+from user_info ui,depart_info di
+where ui.dino = di.dino;
+
+function 리턴o
+프로시져 리턴x
+
