@@ -46,7 +46,7 @@ package.json 개발용 디펜던시
   } 생김
 
   .gitignore 파일 생성 후 /node_modules --> 노드모듈 깃에 올리는거 막기
-
+ng serve -p 80
 
 D:\ts2\works\exp>git init
 D:\ts2\works\exp>git remote add origin https://github.com/jaehongjun/exp.git
@@ -64,3 +64,15 @@ dynamic
 db
 서버영역 3306
 데이터 JSON
+
+NgModule
+declaration 컴포넌트 등록하는곳
+imports     module을 바라봄
+
+constructor() 생성자 
+
+tsconfig.json "out": "js/script.js", 모든 ts를 하나의 js로 만들기 위함(webpack)
+
+도커 간단한 서버통신전송 
+
+interface 그룹화,설계하기 위해 쓰임

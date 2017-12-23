@@ -1,0 +1,33 @@
+<div>
+    {{di.dino}}
+    {{di.diname}}
+    {{di.didesc}}
+    {{di.dicnt}}
+</div>
+<p>
+    번호: <input type="text" [(ngModel)]="di.dino"/><br/>
+    이름: <input type="text" [(ngModel)]="di.diname"/><br/>
+    부서: <input type="text" [(ngModel)]="di.didesc"/><br/>
+    카운트: <input type="text" [(ngModel)]="di.dicnt"/><br/>
+    <button (click)="adiDepart()">부서추가</button>
+    <button (click)="changeShow()">{{button}}</button>
+    <button (click)="showDepartList()">부서리스트 보기</button>    
+    
+</p>
+<table *ngIf="diList.length!=0" border="1">
+  <tr>
+      <th>번호   </th>
+      <th>이름   </th>
+      <th>부서   </th>
+      <th>카운트  </th>
+      <th>삭제    </th>
+  </tr>
+  <tr *ngFor="let di of diList; let idx = index;">    
+        <td>{{di.dino}}</td>
+        <td>{{di.diname}}</td>
+        <td>{{di.didesc}} </td>
+        <td>{{di.dicnt}}</td>                
+        <td><button (click)="diDelete(idx)">삭제</button></td>
+  </tr>
+</table>
+<app-test *ngIf="isShow"></app-test>

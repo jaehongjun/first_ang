@@ -1,0 +1,9 @@
+<p>
+  {{tt.name}}
+  {{tt.title}}
+</p>
+<div>
+  이름: <input type="text" [(ngModel)]="tt.name"/>
+  타이틀: <input type="text" [(ngModel)]="tt.title"/>
+<button (click) = "changeTitle()">타이틀변경</button>
+</div>

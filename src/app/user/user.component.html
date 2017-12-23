@@ -1,0 +1,40 @@
+
+<div class="container">
+  <h2>{{title}}</h2>
+  <button (click)="getUsers()">유저리스트불러오기</button><br/>
+ <div>
+   이름 : <input type="text"  [(ngModel)] = "addUserObj.userName"><br/>
+   아이디 : <input type="text"  [(ngModel)] = "addUserObj.userId"><br/>
+   비밀번호 : <input type="text"  [(ngModel)] = "addUserObj.userPwd"><br/>
+   나이 : <input type="text"  [(ngModel)] = "addUserObj.userAge"><br/>
+ </div>
+  <button (click)="addUser()">가상유저 추가</button>
+  
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>userNo</th>
+        <th>userName</th>
+        <th>userId</th>
+        <th>userPwd</th>
+        <th>완료여부</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="userList.length==0">
+        <td colspan="6">데이터 한개도 읎음!!</td>
+      </tr>
+      <tr *ngFor="let un of userList" (click)="showUserHis(un.userNo)">
+        <td><input type="text" value="{{un.userNo}}" disabled=true/></td>
+        <td><input type="text" [(ngModel)]="un.userName"/></td>
+        <td><input type="text" [(ngModel)]="un.userId"/></td>
+        <td><input type="text" [(ngModel)]="un.userPwd"/></td>
+        <td>
+            <input type="checkbox" [checked]="un.complete"/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  
+  

@@ -15,6 +15,11 @@
     <li *ngFor='let u of userList'>{{u.userName}} , {{u.userAge}}</li>
   </ul>
 </div>
+<a [routerLink]="['/']">Home</a>
+<a [routerLink]="['/user']">User List</a>
+<a [routerLink]="['/test']">test List</a>
+<a [routerLink]="['/depart']">depart List</a>
+<div>
 <div>
   <input type="text" id="userName" [(ngModel)] = "userName">
   <input type="text" id="userAge" [(ngModel)] = "userAge">
@@ -33,3 +38,6 @@
   </li>
 </ul>
 
+<div class ="container">
+  <router-outlet></router-outlet>
+</div>
