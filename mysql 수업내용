@@ -40,3 +40,7 @@ where ui.dino = di.dino;
 function 리턴o
 프로시져 리턴x
 
+select @@autocommit;
+
+스냅샷 commit안하고 종료시 이전 시점으로 돌아가는거?
+

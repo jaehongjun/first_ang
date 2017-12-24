@@ -14,6 +14,8 @@ export class DepartComponent implements OnInit {
   isShow : boolean = false;
   button:string = "테스트보기";
   diList: Array<Depart>=[];
+  visible :boolean = false;
+  subTitle:string = this.title;
   constructor(private dis: DepartService) {    
     this.di = new Depart();
     // dis.getDepartList();
@@ -22,18 +24,24 @@ export class DepartComponent implements OnInit {
     // this.di.diname = "개발";
     // this.di.didesc = "부서";
     // this.di.dicnt = 1;    
-    // console.log(this.di);
-   }
-  
+    // console.log(this.di);    
+   }  
   ngOnInit() {
   }
-  adiDepart():void{
-    this.dis.addDepart(this.di)
-    this.di = new Depart();
-    // this.diList.push(this.di);
-    // this.di =  new Depart();
-    // console.log(this.diList);
+  adiDepart(di:Depart):void{
+    // subscribe = 데이터를 풀어주는 역할
+    this.dis.addDepart(di).subscribe(
+      datas =>{
+        // json주고 받는다.
+        let result = datas.json();
+        this.di = result.di;
+      }
+    )
+    // console.log(JSON.stringify(di))
+    // this.dis.addDepart(di)
+    // this.di = new Depart();    
   }
+  
   showDepartList():void{
     this.diList = this.dis.getDepartList()
   }
@@ -58,5 +66,17 @@ export class DepartComponent implements OnInit {
     let idx:number = this.getFind(dino);
     alert(idx);
     this.diList.splice(idx,1);
+  }
+  toggleDepartInsert(v:boolean){
+    console.log(v);
+    this.visible = v;
+  }
+  childDi(di:Depart){
+    console.log('childDi');
+    console.log(JSON.stringify(di))
+    this.adiDepart(di);
+  }
+  childevisible(){
+    this.visible = false;
   }
 }

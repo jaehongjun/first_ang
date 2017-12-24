@@ -8,15 +8,17 @@ import {User} from './user';
 })
 export class AppComponent {
   title = 'app';
-  //user = new User();
+  user : User;
   userList:Array<User> = [];
   
   userName : string = "";
   userAge :number = 0;
 
-constructor(){ // onload와 유사
-  // this.user.userName = "jeon"
-  // this.user.userAge = 1
+constructor(){ // onload와 유사 (생성자)
+  this.user = new User();
+  this.user.userId = "test";
+  this.user.userName = "jeon"
+  sessionStorage.setItem("user",JSON.stringify(this.user));
 }
   addUser() : void{
     var user:User = new User();

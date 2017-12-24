@@ -8,6 +8,9 @@ import { UserComponent } from './user/user.component';
 import {enableProdMode} from '@angular/core';
 import { TestComponent } from './test/test.component';
 import { DepartComponent } from './depart/depart.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { DepartinsertComponent } from './departinsert/departinsert.component';
+import { FuncTestComponent } from './func-test/func-test.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { DepartComponent } from './depart/depart.component';
     AppComponent,
     UserComponent,
     TestComponent,
-    DepartComponent
+    DepartComponent,
+    WelcomeComponent,
+    DepartinsertComponent,
+    FuncTestComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +29,7 @@ import { DepartComponent } from './depart/depart.component';
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      {
+      { 
         path:'user',
         component:UserComponent,
       },
@@ -34,6 +40,22 @@ import { DepartComponent } from './depart/depart.component';
       {
         path:'depart',
         component:DepartComponent,
+      },
+      {
+        path:'departinsert',
+        component:DepartinsertComponent,
+      },
+      {
+        path:'functest',
+        component:FuncTestComponent,
+      },
+      {
+        path:'',
+        component:WelcomeComponent,
+      },
+      {
+        path:'**',
+        component:WelcomeComponent,
       },
     ])
   ],
