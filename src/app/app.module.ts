@@ -11,6 +11,8 @@ import { DepartComponent } from './depart/depart.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DepartinsertComponent } from './departinsert/departinsert.component';
 import { FuncTestComponent } from './func-test/func-test.component';
+import { PromiseComponent } from './promise/promise.component';
+import { DepartUpdateComponent } from './depart-update/depart-update.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { FuncTestComponent } from './func-test/func-test.component';
     DepartComponent,
     WelcomeComponent,
     DepartinsertComponent,
-    FuncTestComponent
+    FuncTestComponent,
+    PromiseComponent,
+    DepartUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,10 @@ import { FuncTestComponent } from './func-test/func-test.component';
       {
         path:'functest',
         component:FuncTestComponent,
+      },
+      {
+        path:'promise',
+        component:PromiseComponent,
       },
       {
         path:'',

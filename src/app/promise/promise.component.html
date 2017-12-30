@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+<div>
+<button (click)="logTest()">순차로그 입력</button>
+<button (click)="logTest2()">동기로그 입력</button>
+<button (click)="logTest3()">프로미스로그 입력</button>
+</div>
+<ul>
+  <li *ngFor = "let log of proLogList">
+    {{log.num}} = {{log.text}}
+  </li>
+</ul>

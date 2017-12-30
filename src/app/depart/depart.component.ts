@@ -11,11 +11,14 @@ import { last } from '@angular/router/src/utils/collection';
 export class DepartComponent implements OnInit {
   title:string = "부서정보";
   di:Depart;
+  diNo:string ="";
   isShow : boolean = false;
   button:string = "테스트보기";
   diList: Array<Depart>=[];
   visible :boolean = false;
+  upVisible:boolean = false;
   subTitle:string = this.title;
+  duDiNo:number;
   constructor(private dis: DepartService) {    
     this.di = new Depart();
     // dis.getDepartList();
@@ -28,22 +31,29 @@ export class DepartComponent implements OnInit {
    }  
   ngOnInit() {
   }
-  adiDepart(di:Depart):void{
-    // subscribe = 데이터를 풀어주는 역할
-    this.dis.addDepart(di).subscribe(
-      datas =>{
-        // json주고 받는다.
-        let result = datas.json();
-        this.di = result.di;
-      }
-    )
-    // console.log(JSON.stringify(di))
-    // this.dis.addDepart(di)
-    // this.di = new Depart();    
-  }
+  // adiDepart(di:Depart):void{
+  //   // subscribe = 데이터를 풀어주는 역할
+  //   this.dis.addDepart(di).subscribe(
+  //     datas =>{
+  //       // json주고 받는다.
+  //       let result = datas.json();
+  //       this.di = result.di;
+  //     }
+  //   )
+  //   // console.log(JSON.stringify(di))
+  //   // this.dis.addDepart(di)
+  //   // this.di = new Depart();    
+  // }
   
   showDepartList():void{
-    this.diList = this.dis.getDepartList()
+    // alert(this.diNo);
+    this.dis.getDepartList(this.diNo).subscribe(
+      datas => {
+        console.log(datas.json());
+        this.diList = datas.json();
+      }
+    )
+    //this.diList = this.dis.getDepartList()
   }
   changeShow():void{
     this.isShow = !this.isShow
@@ -62,10 +72,28 @@ export class DepartComponent implements OnInit {
     })    
     return idx;
   }
-  diDelete(dino:number){
-    let idx:number = this.getFind(dino);
-    alert(idx);
-    this.diList.splice(idx,1);
+  diDelete(dino:string){
+    // let idx:number = this.getFind(dino);
+    // alert(idx);
+    // this.diList.splice(idx,1);
+    this.dis.deleteDepart(dino).subscribe(
+      datas => {
+        let result = datas.json();      
+        if(result.error){
+          alert(result.error.msg);
+        }else{
+          alert("정상적으로 삭제 되었습니다.")
+          this.showDepartList();
+        }
+        // // 내가 코딩한거
+        // if(result.succeed=="OK"){
+        //   alert("부서삭제가 정상적으로 성공하였습니다.");
+        //   this.showDepartList();
+        // }else{
+        //   alert("부서삭제가 실패하였습니다.")
+        // }        
+      }
+    )
   }
   toggleDepartInsert(v:boolean){
     console.log(v);
@@ -74,9 +102,28 @@ export class DepartComponent implements OnInit {
   childDi(di:Depart){
     console.log('childDi');
     console.log(JSON.stringify(di))
-    this.adiDepart(di);
+    this.addDepart(di);
   }
   childevisible(){
     this.visible = false;
+  }
+  addDepart(di:Depart):void{
+    this.dis.addDepartPost(di).subscribe(
+      datas => {
+        let result = datas.json();
+        if(result.succeed=="OK"){
+          alert("부서추가가 정상적으로 성공하였습니다.");
+          this.showDepartList();
+        }else{
+          alert("부서추가가 실패하였습니다.")
+        }
+        }      
+    )
+  }
+  openView(di:Depart):void{   
+    this.duDiNo = di.dino;     
+    this.upVisible = true;
+    console.log(di);
+
   }
 }
