@@ -66,7 +66,7 @@ export class DepartComponent implements OnInit {
   getFind(dino):number{
     let idx:number = -1;
     this.diList.forEach((di,index)=>{
-      if(di.dino==dino){
+      if(di.diNo==dino){
         idx = index;
       }
     })    
@@ -120,10 +120,9 @@ export class DepartComponent implements OnInit {
         }      
     )
   }
-  openView(di:Depart):void{   
-    this.duDiNo = di.dino;     
+  openView(di:Depart):void{       
+    console.log(JSON.stringify(di));    
+    this.duDiNo = di.diNo;     
     this.upVisible = true;
-    console.log(di);
-
   }
 }

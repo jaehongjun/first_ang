@@ -51,7 +51,7 @@ D:\ts2\works\exp>git commit -m "init"
 --로컬 레파지토리 -> 라이브
   git push origin master
 
-static
+static 
 서버영역 80
 dynamic
 서버영역 3000
@@ -110,3 +110,7 @@ func?:Function <= 옵션 파라미터
 콜 바인딩하면서 콜 
 
 RxJS 앵귤러 http
+
+OnDestroy 컴포넌트가 파괴될 때
+
+OnChanges

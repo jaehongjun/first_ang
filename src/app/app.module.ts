@@ -13,6 +13,9 @@ import { DepartinsertComponent } from './departinsert/departinsert.component';
 import { FuncTestComponent } from './func-test/func-test.component';
 import { PromiseComponent } from './promise/promise.component';
 import { DepartUpdateComponent } from './depart-update/depart-update.component';
+import { ParentComponent } from './parent/parent.component';
+import { LifecycleTestComponent } from './lifecycle-test/lifecycle-test.component';
+import { UserDepartComponent } from './user-depart/user-depart.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { DepartUpdateComponent } from './depart-update/depart-update.component';
     DepartinsertComponent,
     FuncTestComponent,
     PromiseComponent,
-    DepartUpdateComponent
+    DepartUpdateComponent,
+    ParentComponent,
+    LifecycleTestComponent,
+    UserDepartComponent
   ],
   imports: [
     BrowserModule,
@@ -34,8 +40,8 @@ import { DepartUpdateComponent } from './depart-update/depart-update.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { 
-        path:'user',
-        component:UserComponent,
+        path:'userDepart',
+        component:UserDepartComponent,
       },
       {
         path:'test',
@@ -56,6 +62,10 @@ import { DepartUpdateComponent } from './depart-update/depart-update.component';
       {
         path:'promise',
         component:PromiseComponent,
+      },
+      {
+        path:'parent',
+        component:ParentComponent,
       },
       {
         path:'',

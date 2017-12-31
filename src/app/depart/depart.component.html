@@ -3,7 +3,7 @@
     이름: <input type="text" [(ngModel)]="di.diname"/><br/>
     부서: <input type="text" [(ngModel)]="di.didesc"/><br/>
     카운트: <input type="text" [(ngModel)]="di.dicnt"/><br/>         -->
-    <app-depart-update *ngIf="upVisible" [title]="subTitle" [duDiNo]="duDiNo" (openView)="openView($event)"></app-depart-update>
+    <app-depart-update *ngIf="upVisible" [title]="subTitle" [duDiNo]="duDiNo" (openView)="openView($event)" (showDepartList) = "showDepartList($event)"></app-depart-update>
     <app-departinsert *ngIf="visible" [title]="subTitle" (childDi)="childDi($event)" (childevisible)="childevisible($event)"></app-departinsert>
     <button (click)="changeShow()">{{button}}</button>
     <!-- <button (click)="adiDepart()">부서추가</button> -->

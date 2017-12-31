@@ -1,0 +1,8 @@
+<p>
+  parent works!
+</p>
+<button (click) = "chVisible(true)">자식창 보기</button>
+<button (click) = "chVisible(false)">자식창 숨기기</button>
+<app-lifecycle-test *ngIf="visible" [title] = "subTitle"
+(childeVisible) = "chVisible($event)"
+></app-lifecycle-test>

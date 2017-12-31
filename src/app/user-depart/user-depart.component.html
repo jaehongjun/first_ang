@@ -1,0 +1,33 @@
+<input type="text" name="" id="" [(ngModel)] = "username">
+<button (click)="showDepartList('')">리스트 검색</button>     
+<table *ngIf="UDList.length!=0" border="1">
+  <tr>
+      <th>번호   </th>
+      <th>부서   </th>
+      <th>카운트  </th>
+      <th>유저이름  </th>
+      <th>유저아이디  </th>
+      <th>유저비밀번호  </th>
+      <th>유저주소  </th>
+      <th>부서이름  </th>      
+      <th>수정  </th>      
+      <th>삭제    </th>
+  </tr>
+  <tr *ngFor="let ud of UDList; let idx = index;">    
+        <td (click)="openView(ud)">{{ud.dino}}</td>        
+        <td>{{ud.didesc}} </td>
+        <td>{{ud.dicnt}}</td>                
+        <td><input type='text' [(ngModel)] ="ud.username"></td>                
+        <td><input type='text' [(ngModel)] ="ud.userid"></td>                
+        <td>{{ud.userpwd}}</td>                
+        <td>{{ud.useraddress}}</td>                                
+        <td>
+          <select name="" id="" [(ngModel)]="ud.dino">
+            <option *ngFor = "let di of diList" [value]="di.dino" >{{di.diname}}</option>
+          </select>
+        </td>
+        <td><button (click)="udModify(ud)">수정</button></td>
+        <td><button (click)="diDelete(ud.userno)">삭제</button></td>
+  </tr>
+  
+</table>

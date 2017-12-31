@@ -1,6 +1,6 @@
 export class Depart{
-    dino:number;
-    diname:string;
-    didesc:string;
-    dicnt:number;
+    diNo:number;
+    diName:string;
+    diDesc:string;
+    diCnt:number;
 }

@@ -10,10 +10,12 @@ import {DepartUpdateService} from './depart-update.service'
 })
 export class DepartUpdateComponent implements OnInit {
   di:Depart;
+  diNo:string;
   @Input() duDiNo:number;
   @Input() visible:boolean = true;
   @Output() childevisible = new EventEmitter<boolean>(); // boolean전달 이벤트
   @Output() openView = new EventEmitter<Depart>();
+  @Output() showDepartList = new EventEmitter<Depart>();
   constructor(private dus : DepartUpdateService) { }
 
   ngOnInit() {
@@ -28,10 +30,28 @@ export class DepartUpdateComponent implements OnInit {
     this.visible = false;
     this.childevisible.emit(this.visible);
   }
+
   openViewGo(di:Depart):void{
     console.log('?',this.di)
     this.openView.emit(this.di)
     this.close();
   }
-
+  updateDepart():void{
+    this.dus.updateDepartPost(this.di).subscribe(
+      res=>{
+        console.log(res.json);
+        let result = res.json();        
+        if(result.succeed == 'OK'){
+          alert('성공')    
+          this.close();
+          this.showDepartList.emit();      
+        }
+        else{
+          alert('실패')          
+        }
+        
+      }
+    )
+      
+  }
 }
