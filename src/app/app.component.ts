@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {User} from './user';
+import { Http,Response,Headers } from '@angular/http'
+import { Observable } from 'rxjs/Observable';
+import {RouterLink} from '../app/router-link'
 
 @Component({
   selector: 'app-root',
@@ -9,16 +12,23 @@ import {User} from './user';
 export class AppComponent {
   title = 'app';
   user : User;
+  rlList : Array<RouterLink>=[];
   userList:Array<User> = [];
-  
+  url:string = "http://localhost:3000/"
   userName : string = "";
   userAge :number = 0;
 
-constructor(){ // onload와 유사 (생성자)
+constructor(protected _http:Http){ // onload와 유사 (생성자)
   this.user = new User();
   this.user.userId = "test";
   this.user.userName = "jeon"
   sessionStorage.setItem("user",JSON.stringify(this.user));
+  this.getMenuList().subscribe(
+    res=>{
+      this.rlList = res.json().list;
+      console.log(this.rlList);
+    }
+  );
 }
   addUser() : void{
     var user:User = new User();
@@ -36,5 +46,11 @@ constructor(){ // onload와 유사 (생성자)
     user1.userName = "쌍둥이";
     user1.userAge = 6;
     this.userList.push(user1);
+    }
+
+    getMenuList():Observable<any>{
+      let url:string ="api/menus/";
+      console.log(url);
+      return this._http.get(this.url+url);
     }
 }

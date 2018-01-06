@@ -2,14 +2,15 @@
     <nav class='navbar navbar-default'>
         <div class='container-fluid'>
             <a class='navbar-brand'>{{pageTitle}}</a>
-            <ul class='nav navbar-nav'>
-                <li><a [routerLink]="['/']">Home</a></li>
+            <ul class='nav navbar-nav' *ngFor = "let r of rlList">       
+                <li><a [routerLink]="r.mUrl">{{r.mText}}</a></li>                         
+                <!-- <li><a [routerLink]="['/']">Home</a></li>
                 <li><a [routerLink]="['/userDepart']">User List</a></li>
                 <li><a [routerLink]="['/test']">Test Component</a></li>
                 <li><a [routerLink]="['/depart']">Depart List</a></li>
                 <li><a [routerLink]="['/functest']">Func Test</a></li>
                 <li><a [routerLink]="['/promise']">Promise Test</a></li>
-                <li><a [routerLink]="['/parent']">Parent Test</a></li>
+                <li><a [routerLink]="['/parent']">Parent Test</a></li> -->
             </ul>
         </div>
     </nav>
